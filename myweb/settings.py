@@ -65,6 +65,9 @@ MIDDLEWARE = [
 
 STORAGES = {
     "staticfiles": {
+        "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
         "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
 }
