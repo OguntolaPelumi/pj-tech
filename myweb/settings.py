@@ -30,7 +30,7 @@ PROJECT_DIR=os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = "django-insecure-n9*oyzoy=atm7tkqxzs!qc0%gc+toj-!@6^4jk4liqn@=+hvla"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["pjtech.onrender.com", "localhost", "127.0.0.1"]
 
@@ -123,14 +123,33 @@ CONTACT_EMAIL = 'pelmijosh@gmail.com'
 #     }
 # }
 
+# DATABASES = {
+#     "default": dj_database_url.config(
+#         default="mysql://root:OldStunna27!@localhost:3306/myweb",  # local fallback
+#         conn_max_age=600,
+#         ssl_require=False  # True for Render/MySQL production, False for local dev
+#     )
+# }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'myweb_ino8',  # Your database name on Render
+#         'USER': 'myweb_ino8_user',
+#         'PASSWORD': 'M5PRywVjjzaKRdDvyAjAJy8ZSqWp122x',
+#         'HOST': 'dpg-d2hpgh24d50c73bmbr7g-a.render.com',  # Make sure to include .render.com
+#         'PORT': '5432',
+#         'OPTIONS': {
+#             'sslmode': 'require',
+#         },
+
+#     }
+# }
 DATABASES = {
     "default": dj_database_url.config(
-        default="mysql://root:OldStunna27!@localhost:3306/myweb",  # local fallback
-        conn_max_age=600,
-        ssl_require=False  # True for Render/MySQL production, False for local dev
+        default="postgresql://myweb_ino8_user:M5PRywVjjzaKRdDvyAjAJy8ZSqWp122x@dpg-d2hpgh24d50c73bmbr7g-a.oregon-postgres.render.com:5432/myweb_ino8?sslmode=require"
     )
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
