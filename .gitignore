@@ -1,3 +1,10 @@
+# Python
+__pycache__/
+*.pyc
+
+# Django staticfiles
+static/static/
+staticfiles/
 *.pyc
 __pycache__/
 *.DS_Store

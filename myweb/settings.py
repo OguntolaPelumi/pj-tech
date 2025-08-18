@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
+
+import logging
+logging.basicConfig(level=logging.DEBUG)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -65,6 +69,11 @@ STORAGES = {
     },
 }
 
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
+
+
 ROOT_URLCONF = "myweb.urls"
 
 TEMPLATES = [
@@ -78,6 +87,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.media",
             ],
         },
     },
@@ -98,21 +108,28 @@ CONTACT_EMAIL = 'pelmijosh@gmail.com'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "myweb",
+#         "USER": "root",
+#         "PASSWORD": "OldStunna27!",
+#         "HOST": "localhost",
+#         "PORT": "3306",
+#         "OPTIONS": {
+#             "autocommit": True,
+#         },
+
+#     }
+# }
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "myweb",
-        "USER": "root",
-        "PASSWORD": "OldStunna27!",
-        "HOST": "localhost",
-        "PORT": "3306",
-        "OPTIONS": {
-            "autocommit": True,
-        },
-
-    }
+    "default": dj_database_url.config(
+        default="mysql://root:OldStunna27!@localhost:3306/myweb",  # local fallback
+        conn_max_age=600,
+        ssl_require=False  # True for Render/MySQL production, False for local dev
+    )
 }
-
 
 
 # Password validation
