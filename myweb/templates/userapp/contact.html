@@ -1,0 +1,103 @@
+{% extends 'common_page.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Contact{% endblock title %}
+
+{% block body_content %}
+<style>
+    .contact-section {
+        background-color: #f8f9fa;
+        padding: 3rem 0;
+    }
+
+    .contact-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        height: 100%;
+    }
+
+    .contact-title {
+        font-weight: bold;
+        color: #0d6efd;
+    }
+
+    .contact-info {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+
+    .contact-info i {
+        color: #0d6efd;
+        margin-right: 8px;
+    }
+
+    .btn-contact {
+        background-color: #0d6efd;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-contact:hover {
+        background-color: #0b5ed7;
+    }
+
+    .container {
+        margin-top: 100px;
+    }
+</style>
+
+<section class="contact-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h1 class="fw-bold text-success">Contact Me</h1>
+            <p class="text-muted">Let’s connect! Fill out the form or reach me directly.</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Contact Form -->
+            <div class="col-md-6">
+                <div class="contact-card">
+                    <h4 class="contact-title mb-3 text-success">Send a Message</h4>
+                   
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-success">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-md-6">
+                <div class="contact-card">
+                    <h4 class="contact-title mb-3 text-success">Get in Touch</h4>
+                    <div class="contact-info">
+                        {% comment %} <p><i class="bi bi-envelope-fill"></i> pelmijosh@gmail.com</p>
+                        <p><i class="bi bi-telephone-fill"></i> +2349035993262</p> {% endcomment %}
+                        <p><i class="bi bi-geo-alt-fill"></i> Lagos, Nigeria</p>
+                        <p><i class="bi bi-clock-fill"></i> Mon - Fri: 9am - 5pm</p>
+                    </div>
+                    <hr>
+                    <h5 class="fw-bold">Follow Me</h5>
+                    <p>
+                        <a href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile" 
+                           class="text-decoration-none me-3">Linkedin<i class="bi bi-linkedin"></i></a>
+                        <a href="https://github.com/OguntolaPelumi" class="text-decoration-none me-3">
+                           <i class="bi bi-github"></i> GitHub</a>
+                        <a href="https://x.com/OldStunna" class="text-decoration-none">
+                           X.com<i class="bi bi-twitter"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock body_content %}

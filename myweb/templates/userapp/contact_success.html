@@ -1,0 +1,59 @@
+{% extends 'common_page.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}ContactSucces{% endblock title %}
+
+{% block body_content %}
+<style>
+    /* Center form vertically */
+    .signup-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: calc(100vh - 80px); /* account for navbar height */
+        margin-top: -30px;
+    }
+
+    .signup-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .signup-card h1 {
+        font-size: 1.8rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: #333;
+    }
+
+    /* Button style */
+    .signup-btn {
+        display: block;
+        width: 100%;
+        background: linear-gradient(135deg, #ff416c, #ff4b2b);
+        color: white;
+        border: none;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .signup-btn:hover {
+        background: linear-gradient(135deg, #ff4b2b, #ff416c);
+    }
+</style>
+
+<div class="container signup-container">
+    <div class="signup-card">
+        <h1>Message Sent!</h1>
+        <p>Thank you for contacting PJ-Tech. We’ll get back to you soon.</p>
+        <a href="{% url 'contact' %}" class="btn btn-success mt-4">Go Back</a>
+    </div>
+</div>
+{% endblock body_content %}

@@ -1,0 +1,120 @@
+{% extends 'common_page.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Login{% endblock title %}
+
+{% block body_content %}
+<style>
+    /* Center the form vertically */
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: calc(100vh - 80px); /* 80px accounts for navbar height */
+    }
+
+    .login-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .login-card h1 {
+        font-size: 1.8rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: #333;
+    }
+
+    /* Nice button style */
+    .login-btn {
+        display: block;
+        width: 100%;
+        background: linear-gradient(135deg, #ff416c, #ff4b2b);
+        color: white;
+        border: none;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .login-btn:hover {
+        background: linear-gradient(135deg, #ff4b2b, #ff416c);
+    }
+
+    /* Link styling */
+    .forgot-password {
+        display: inline-block;
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    .forgot-password:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="container login-container">
+    <div class="login-card">
+        <h1>LOGIN TO PJ-TECH</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+
+            <button type="submit" class="login-btn mt-3">Login</button>
+        </form>
+
+        <a class="forgot-password" href="{% url 'password_reset' %}">Forgot password?</a>
+    </div>
+</div>
+{% endblock body_content %}
+
+
+
+
+
+{% comment %} {% extends 'common_page.html' %}
+
+{% block title %}Login{% endblock title %}
+
+{% load bootstrap %}
+{% block body_content %}
+<style>
+   
+   
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="row mt-5">
+        <div class="way col-md-6 col-lg-6 col-lg-6 col-sm-12 col-xm-12">
+            <h1><span>Sign in here</span></h1>
+            <form method="POST">
+                {% csrf_token %}
+                {% load bootstrap %}
+                {{ form|bootstrap }}
+            
+                <input class="bc-white mt-2 ml-2 longibutton" type="submit" value="Login">
+                
+                <a class="date text-primary mt-5 m1-1 me-3"href="{% url 'password_reset' %}">Forgot password</a>
+
+                
+            </form>
+            
+
+        </div>
+
+    </div>
+</div>
+</div>
+</body>
+</html>
+{% endblock body_content %}
+     {% endcomment %}

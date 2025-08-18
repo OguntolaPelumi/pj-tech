@@ -1,0 +1,122 @@
+{% extends 'common_page.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Sign Up{% endblock title %}
+
+{% block body_content %}
+<style>
+    /* Center form vertically */
+    .signup-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: calc(100vh - 80px); /* account for navbar height */
+        margin-top: 100px;
+    }
+
+    .signup-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .signup-card h1 {
+        font-size: 1.8rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: #333;
+    }
+
+    /* Button style */
+    .signup-btn {
+        display: block;
+        width: 100%;
+        background: linear-gradient(135deg, #ff416c, #ff4b2b);
+        color: white;
+        border: none;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .signup-btn:hover {
+        background: linear-gradient(135deg, #ff4b2b, #ff416c);
+    }
+</style>
+
+<div class="container signup-container">
+    <div class="signup-card">
+        <h1>Create an Account</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+
+            <button type="submit" class="signup-btn mt-3">Sign Up</button>
+        </form>
+    </div>
+</div>
+{% endblock body_content %}
+
+
+
+{% comment %} {% extends 'common_page.html' %}
+
+{% block title %}SignUp{% endblock title %}
+
+{% load bootstrap %}
+{% block body_content %}
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        
+        margin: 60px auto;
+        background: #fff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        
+    }
+    
+    
+    
+    
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-8">SIGNUP</h3>
+                    <form method="POST">
+                    {% csrf_token %}
+                    {{ form|bootstrap_horizontal:"col-md-4,col-md-5" }}
+                    <div class="form-group text-center">
+                        <input class="bc-white mt-2 ml-2 longibutton" type="submit" value="Signup">
+
+                    </div>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>        
+    </div>
+</div>
+</div>
+</body>
+</html>
+{% endblock body_content %}
+     {% endcomment %}

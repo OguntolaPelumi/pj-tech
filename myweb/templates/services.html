@@ -1,0 +1,193 @@
+{% extends 'common_page.html' %}
+
+{% block title %}Services{% endblock title %}
+
+{% block body_content %}
+<style>
+    .services-section {
+        background-color: #f8f9fa;
+        padding: 3rem 0;
+    }
+
+    .service-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        height: 100%;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .service-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .service-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .services-title {
+        font-weight: bold;
+        color: #0d6efd;
+        margin-bottom: 0.5rem;
+    }
+    .container{
+        margin-top: 100px;
+    }
+</style>
+
+<section class="services-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h1 class="fw-bold text-success">My Services</h1>
+            <p class="text-muted">Turning your ideas into impactful, data-driven solutions.</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Data Analysis & Machine Learning -->
+            <div class="col-md-4">
+                <div class="service-card text-center">
+                    <div class="service-icon">📊</div>
+                    <h4 class="services-title text-success">Data Analysis & Machine Learning</h4>
+                    <p class="text-muted">
+                        Transform raw data into actionable insights using Python, Pandas, NumPy, and Scikit-Learn.
+                        Build predictive models, automate workflows, and discover trends to drive smart decisions.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Data Visualization & Dashboarding -->
+            <div class="col-md-4">
+                <div class="service-card text-center">
+                    <div class="service-icon">📈</div>
+                    <h4 class="services-title text-success">Data Visualization & Dashboarding</h4>
+                    <p class="text-muted">
+                        Create interactive dashboards and visualizations with Power BI, Tableau, and Plotly.
+                        Simplify complex data for clear, engaging presentations.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Web Development -->
+            <div class="col-md-4">
+                <div class="service-card text-center">
+                    <div class="service-icon">💻</div>
+                    <h4 class="services-title text-success">Web Development</h4>
+                    <p class="text-muted">
+                        Build responsive, modern websites with HTML, CSS, Bootstrap, and Django.
+                        From concept to deployment, deliver fast, functional, and beautiful solutions.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="{% url 'contact' %}" class="btn btn-success btn-lg">Work With Me</a>
+        </div>
+    </div>
+</section>
+{% endblock body_content %}
+
+
+
+{% comment %} {% extends 'common_page.html' %}
+
+{% block title %}services{% endblock title %}
+
+<style>
+    .container{
+        margin-bottom: -700px;
+    }
+</style>
+
+{% block body_content %}
+<section class="container">
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">My Services</h1>
+        <p class="text-muted">Helping you turn ideas into impactful, data-driven solutions.</p>
+    </div>
+
+    <div class="row g-4">
+        <!-- Data Analysis & Machine Learning -->
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100 border-0">
+                <div class="card-body text-center">
+                    <div class="fs-1 mb-3">📊</div>
+                    <h4 class="card-title">Data Analysis & Machine Learning</h4>
+                    <p class="card-text text-muted">
+                        Transform raw data into actionable insights using Python, Pandas, NumPy, and Scikit-Learn. 
+                        I build predictive models, automate data workflows, and uncover patterns to drive decision-making.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Visualization & Dashboarding -->
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100 border-0">
+                <div class="card-body text-center">
+                    <div class="fs-1 mb-3">📈</div>
+                    <h4 class="card-title">Data Visualization & Dashboarding</h4>
+                    <p class="card-text text-muted">
+                        Create interactive dashboards and clear visualizations using tools like Power BI, Tableau, and Plotly. 
+                        I help make complex data easy to understand and present to stakeholders.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Web Development -->
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100 border-0">
+                <div class="card-body text-center">
+                    <div class="fs-1 mb-3">💻</div>
+                    <h4 class="card-title">Web Development</h4>
+                    <p class="card-text text-muted">
+                        Build modern, responsive websites using HTML, CSS, Bootstrap, and Django. 
+                        From concept to deployment, I create functional and visually appealing sites tailored to your needs.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="{% url 'contact' %}" class="btn btn-primary btn-lg">Work With Me</a>
+    </div>
+
+     <!-- Data Visualization & Dashboarding -->
+     <div class="col-md-4">
+        <div class="card shadow-sm h-100 border-0">
+            <div class="card-body text-center">
+                <div class="fs-1 mb-3">📈</div>
+                <h4 class="card-title">Data Visualization & Dashboarding</h4>
+                <p class="card-text text-muted">
+                    Create interactive dashboards and clear visualizations using tools like Power BI, Tableau, and Plotly. 
+                    I help make complex data easy to understand and present to stakeholders.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Web Development -->
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100 border-0">
+            <div class="card-body text-center">
+                <div class="fs-1 mb-3">💻</div>
+                <h4 class="card-title">Web Development</h4>
+                <p class="card-text text-muted">
+                    Build modern, responsive websites using HTML, CSS, Bootstrap, and Django. 
+                    From concept to deployment, I create functional and visually appealing sites tailored to your needs.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-5">
+    <a href="{% url 'contact' %}" class="btn btn-primary btn-lg">Work With Me</a>
+</div>
+</section>
+
+{% endblock body_content %} {% endcomment %}
