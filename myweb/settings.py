@@ -23,7 +23,7 @@ logging.basicConfig(level=logging.DEBUG)
 BASE_DIR = Path(__file__).resolve().parent.parent
 PROJECT_DIR=os.path.dirname(os.path.abspath(__file__))
 
-pplication = get_wsgi_application()
+application = get_wsgi_application()
 application = WhiteNoise(application, root=os.path.join(BASE_DIR, 'staticfiles'))
 
 
