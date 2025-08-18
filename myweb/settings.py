@@ -26,9 +26,9 @@ PROJECT_DIR=os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = "django-insecure-n9*oyzoy=atm7tkqxzs!qc0%gc+toj-!@6^4jk4liqn@=+hvla"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["pjtech.onrender.com", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -50,6 +50,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware", # <-- add this
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -146,6 +147,9 @@ STATIC_URL = "static/"
 
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR, "static")]
+
+# This is where collectstatic will put all static files
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Media files (uploads)
 MEDIA_URL = '/media/'
