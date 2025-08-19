@@ -22,6 +22,8 @@
                 
                 
     <title>Bootstrap Example</title>
+
+    
   </head>
 </head>
 <body>
@@ -36,13 +38,13 @@
                       
                   </div>
                   
-                  <div class="searchbuttton">
+                  {% comment %} <div class="searchbuttton">
                     <form class="d-flex" role="search">
                       <input class="form-control me-2" type="search" placeholder="search recent project" aria-label="Search">
                       <button class="btn btn-outline-success" type="submit">Search</button>
                       
                     </form>
-                  </div>
+                  </div> {% endcomment %}
                       <div class="ul">
                           <ul>
                               <li><a href="{% url 'home' %}">HOME</a></li>
@@ -79,7 +81,7 @@
                       <img src="{% static 'media/Machine-Learning.jpg' %}" class="d-block w-100" alt="...">
                       <div class="carousel-caption d-sm-block d-md-block">
                           <div class="caro">
-                              <h1>Welcome To OldStunna-Tech</h1>
+                              <h1>Welcome To PJ-Tech</h1>
                           <p>Turning Complex data into clear, actionable insights <br> that power smarter decisions.</p>
                           <button><a href="{% url 'contact' %}">Message Us</a></button>
                           </div>

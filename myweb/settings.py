@@ -23,8 +23,7 @@ logging.basicConfig(level=logging.DEBUG)
 BASE_DIR = Path(__file__).resolve().parent.parent
 PROJECT_DIR=os.path.dirname(os.path.abspath(__file__))
 
-application = get_wsgi_application()
-application = WhiteNoise(application, root=os.path.join(BASE_DIR, 'staticfiles'))
+
 
 
 
@@ -68,19 +67,22 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-STORAGES = {
-    "staticfiles": {
-        "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-    },
-        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
-    },
-}
+# STORAGES = {
+#     "staticfiles": {
+#         "default": {
+#         "BACKEND": "django.core.files.storage.FileSystemStorage",
+#     },
+#         "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+#     },
+# }
 
-# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+application = get_wsgi_application()
+application = WhiteNoise(application, root=str(BASE_DIR / 'staticfiles'), prefix='static/')
 
 ROOT_URLCONF = "myweb.urls"
 
@@ -155,7 +157,8 @@ CONTACT_EMAIL = 'pelmijosh@gmail.com'
 # }
 DATABASES = {
     "default": dj_database_url.config(
-        default="postgresql://myweb_ino8_user:M5PRywVjjzaKRdDvyAjAJy8ZSqWp122x@dpg-d2hpgh24d50c73bmbr7g-a.oregon-postgres.render.com:5432/myweb_ino8?sslmode=require"
+        default="postgresql://myweb_ino8_user:M5PRywVjjzaKRdDvyAjAJy8ZSqWp122x@dpg-d2hpgh24d50c73bmbr7g-a.oregon-postgres.render.com:5432/myweb_ino8?sslmode=require",
+        conn_max_age=600,
     )
 }
 
