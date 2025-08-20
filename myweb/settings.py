@@ -13,11 +13,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
-from django.core.wsgi import get_wsgi_application
 from whitenoise import WhiteNoise
 
-import logging
-logging.basicConfig(level=logging.DEBUG)
+# import logging
+# logging.basicConfig(level=logging.DEBUG)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,7 +33,7 @@ PROJECT_DIR=os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = "django-insecure-n9*oyzoy=atm7tkqxzs!qc0%gc+toj-!@6^4jk4liqn@=+hvla"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["pjtech.onrender.com", "localhost", "127.0.0.1"]
 
@@ -76,13 +75,11 @@ MIDDLEWARE = [
 #     },
 # }
 
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
-# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+# # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-application = get_wsgi_application()
-application = WhiteNoise(application, root=str(BASE_DIR / 'staticfiles'), prefix='static/')
 
 ROOT_URLCONF = "myweb.urls"
 
@@ -118,49 +115,41 @@ CONTACT_EMAIL = 'pelmijosh@gmail.com'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.mysql",
-#         "NAME": "myweb",
-#         "USER": "root",
-#         "PASSWORD": "OldStunna27!",
-#         "HOST": "localhost",
-#         "PORT": "3306",
-#         "OPTIONS": {
-#             "autocommit": True,
-#         },
 
-#     }
-# }
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'myweb_ino8',  # Your database name on Render
+        'USER': 'myweb_ino8_user',
+        'PASSWORD': 'M5PRywVjjzaKRdDvyAjAJy8ZSqWp122x',
+        'HOST': 'dpg-d2hpgh24d50c73bmbr7g-a.oregon-postgres.render.com',
+        'PORT': '5432',
+        'OPTIONS': {
+            'sslmode': 'require',
+        },
+
+    }
+}
 
 # DATABASES = {
 #     "default": dj_database_url.config(
-#         default="mysql://root:OldStunna27!@localhost:3306/myweb",  # local fallback
+#         default="postgresql://myweb_ino8_user:M5PRywVjjzaKRdDvyAjAJy8ZSqWp122x@dpg-d2hpgh24d50c73bmbr7g-a.oregon-postgres.render.com:5432/myweb_ino8",
 #         conn_max_age=600,
-#         ssl_require=False  # True for Render/MySQL production, False for local dev
 #     )
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'myweb_ino8',  # Your database name on Render
-#         'USER': 'myweb_ino8_user',
-#         'PASSWORD': 'M5PRywVjjzaKRdDvyAjAJy8ZSqWp122x',
-#         'HOST': 'dpg-d2hpgh24d50c73bmbr7g-a.render.com',  # Make sure to include .render.com
-#         'PORT': '5432',
-#         'OPTIONS': {
-#             'sslmode': 'require',
-#         },
 
-#     }
+
+# DATABASES = {
+#     "default": dj_database_url.config(
+#         default="postgresql://myweb_ino8_user:M5PRywVjjzaKRdDvyAjAJy8ZSqWp122x@dpg-d2hpgh24d50c73bmbr7g-a.oregon-postgres.render.com:5432/myweb_ino8",
+#         conn_max_age=600,
+#         ssl_require=True
+#     )
 # }
-DATABASES = {
-    "default": dj_database_url.config(
-        default="postgresql://myweb_ino8_user:M5PRywVjjzaKRdDvyAjAJy8ZSqWp122x@dpg-d2hpgh24d50c73bmbr7g-a.oregon-postgres.render.com:5432/myweb_ino8?sslmode=require",
-        conn_max_age=600,
-    )
-}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -198,8 +187,10 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-STATICFILES_DIRS=[
-    os.path.join(BASE_DIR, "static")]
+# STATICFILES_DIRS=[
+#     os.path.join(BASE_DIR, "static")]
+
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # This is where collectstatic will put all static files
 STATIC_ROOT = BASE_DIR / "staticfiles"
